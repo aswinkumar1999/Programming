@@ -61,20 +61,35 @@ Theta2_grad = zeros(size(Theta2));
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %
+I = eye(num_labels);
+Y = zeros(m, num_labels);
+for i = 1 : m
+  Y(i, :) = I(y(i), :);
+end
+
+% Y = 5000*10
+A1 = [ones(m,1) X];
+Z1 = A1* Theta1';
+A2 = [ones(size(Z1),1) sigmoid(Z1)];
+Z2 = A2*Theta2';
+A3 = sigmoid(Z2);
+
+% A3 = 5000*10
+Reg = (lambda/(2*m)) * (sum(sum(Theta1(:,2:end).^2))+sum(sum(Theta2(:,2:end).^2)));
+J = (-1/m) *sum(sum(( Y.*log(A3) + (1-Y).*log(1-A3)))) + Reg;
 
 
+delta3 = A3 - Y ;
+% delta3 = 5000 * 10
+% Z2 = 5000 * 10
+% Theta2 = 10*26
+delta2 = (delta3 * Theta2 .* sigmoidGradient([ones(size(Z1), 1) Z1]))(:, 2:end);
 
+Delta2 = (delta3' * A2);
+Delta1 = (delta2' * A1);
 
-
-
-
-
-
-
-
-
-
-
+Theta1_grad = 1 / m * Delta1 + lambda / m * [zeros(size(Theta1), 1) Theta1(:, 2:end)];
+Theta2_grad = 1 / m * Delta2 + lambda / m * [zeros(size(Theta2), 1) Theta2(:, 2:end)];
 
 
 
