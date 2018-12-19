@@ -1,2 +1,2 @@
 # Programming
-This Repository is Created and Mainted as to document Personal Programs.
+This Repository is a dump of my prog files.

@@ -22,7 +22,14 @@ idx = zeros(size(X,1), 1);
 %
 
 
-
+for i=1: size(X, 1);
+  x = X(i,:);
+  norms = zeros(K, 1);
+  for centroid_i=1: K;
+    norms(centroid_i) = (x - centroids(centroid_i,:)) * (x - centroids(centroid_i,:))';
+  end
+  [value, idx(i)] = min(norms);
+end
 
 
 
