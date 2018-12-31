@@ -3,7 +3,18 @@ from PIL import Image
 import cv2
 import os
 
+def printview(a):
+    for i in range(16):
+        for j in range(24):
+            if(a[i][j]==0):
+                print('  ',end='')
+            else:
+                print('* ',end='')
+        print('')
+
 cap = cv2.VideoCapture('vid.mp4')
+
+fin = np.zeros((16,24));
 
 while(cap.isOpened()):
     ret, frame = cap.read()
@@ -23,7 +34,10 @@ while(cap.isOpened()):
     test = cv2.imread('cfi3.jpg',0)
     test = 255-test
     _,test1 = cv2.threshold(test,30,255,0)
-    print(test1)
+    for i in range(24):
+        if(i%2!=0):
+            fin[:,i]=test1[:,int(i/2)]
+    printview(fin)
     os.system('clear') #cls on windows , clear on linux/mac ox
 
 cv2.destroyAllWindows();
