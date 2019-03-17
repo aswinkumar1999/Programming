@@ -65,6 +65,4 @@ for k in list:
             anot_end_y = min(endy, int(ymax)) - starty
             image = cv2.imread("images/"+img,-1)
             new_img = image[starty:endy,startx:endx]
-            cv2.imshow("ASD",new_img)
-            cv2.waitKey(0)
             write_img_and_anot(img,t,new_img,anot_start_x,anot_end_x,anot_start_y,anot_end_y,data)
