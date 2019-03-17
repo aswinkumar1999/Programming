@@ -21,8 +21,8 @@ def write_img_and_anot(img,t,new_img,start_x,end_x,start_y,end_y,data):
     data[5] = data[5][:11]+str(width)+data[5][-9:]
     data[6] = data[6][:12]+str(height)+data[6][-10:]
     data[15] = data[15][:12]+str(start_x)+data[15][-8:]
-    data[16] = data[16][:12]+str(end_x)+data[16][-8:]
-    data[17] = data[17][:12]+str(start_y)+data[17][-8:]
+    data[16] = data[16][:12]+str(start_y)+data[16][-8:]
+    data[17] = data[17][:12]+str(end_x)+data[17][-8:]
     data[18] = data[18][:12]+str(end_y)+data[18][-8:]
     xml_name = img[:-4]+str(t)+".xml"
     f = open("annotationsfin/"+xml_name, "w+")
