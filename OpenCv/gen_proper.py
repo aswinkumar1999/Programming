@@ -17,6 +17,7 @@ except OSError:
 def write_img_and_anot(img,t,new_img,start_x,end_x,start_y,end_y,data):
     img_name =img[:-4]+str(t)+".jpg"
     cv2.imwrite("imagesfin/"+img_name,new_img)
+    data[1] = data[1][:10]+"imagesfin"+data[1][-10:]
     data[2] = data[2][:12]+img_name+data[2][-12:]
     data[5] = data[5][:11]+str(width)+data[5][-9:]
     data[6] = data[6][:12]+str(height)+data[6][-10:]
