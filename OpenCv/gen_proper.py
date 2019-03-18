@@ -15,7 +15,7 @@ except OSError:
     print ('Error: Creating directory of data')
 
 def write_img_and_anot(img,t,new_img,start_x,end_x,start_y,end_y,data):
-    img_name =img[:-4]+str(t)+".jpg"
+    img_name =img[:-4]+"_"+str(t)+".jpg"
     cv2.imwrite("imagesfin/"+img_name,new_img)
     data[1] = data[1][:10]+"imagesfin"+data[1][-10:]
     data[2] = data[2][:12]+img_name+data[2][-12:]
@@ -25,7 +25,7 @@ def write_img_and_anot(img,t,new_img,start_x,end_x,start_y,end_y,data):
     data[16] = data[16][:12]+str(start_y)+data[16][-8:]
     data[17] = data[17][:12]+str(end_x)+data[17][-8:]
     data[18] = data[18][:12]+str(end_y)+data[18][-8:]
-    xml_name = img[:-4]+str(t)+".xml"
+    xml_name = img[:-4]+"_"+str(t)+".xml"
     f = open("annotationsfin/"+xml_name, "w+")
     f.writelines(data)
     f.close()
@@ -37,6 +37,8 @@ for k in list:
     file = open("annotations/"+xml,'r')
     data = file.readlines()
     file.close()
+    width_img = int(data[5][11:-9])
+    height_img = int(data[6][12:-10:])
     xmin = data[15][12:-8]
     ymin = data[16][12:-8]
     xmax = data[17][12:-8]
@@ -60,6 +62,18 @@ for k in list:
             endx = startx+width
             starty=int(ymin)+j*height -extra_y
             endy = starty + height
+            if(startx<0):
+                startx=0
+                endx=startx+width
+            if(endx>width_img):
+                endx=width_img
+                startx=endx-width
+            if(starty<0):
+                starty=0
+                endy=starty+height
+            if(endy>height_img):
+                endy=height_img
+                starty=endy-height
             anot_start_x = max(startx,int(xmin)) - startx
             anot_end_x = min(endx, int(xmax)) - startx
             anot_start_y = max(starty,int(ymin)) - starty
