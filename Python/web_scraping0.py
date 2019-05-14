@@ -1,5 +1,5 @@
 url = "https://collegedunia.com/chennai-colleges"
-no_of_pagedowns = 1
+no_of_pagedowns = 100
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -24,7 +24,7 @@ df = pd.DataFrame(columns=['S No','College Name', 'Address','State','Contact No(
 
 html = browser.page_source
 main_page_content = BeautifulSoup(html,features="lxml")
-webdriver.close()
+browser.close()
 Content = []
 for i in range(len(main_page_content.find_all("div", {"class": "clg-name-address"}))):
     paragraphs = main_page_content.find_all("div", {"class": "clg-name-address"})[i]
@@ -58,7 +58,7 @@ for i in range(len(main_page_content.find_all("div", {"class": "clg-name-address
             while(address.find("\n")>0):
                 loc = address.find("\n")
                 address = address.replace('\n',',')
-        while(not phone[j].isdigit() and j < len(phone)):
+        while(not phone[j].isdigit() and j < len(phone)-1):
             start_Ph=start_Ph+1
             j=j+1
         phone=textContent[l][start_Ph:end_Ph]
