@@ -57,7 +57,7 @@ for i in range(len(main_page_content.find_all("div", {"class": "clg-name-address
             while(address.find("\n")>0):
                 loc = address.find("\n")
                 address = address.replace('\n',',')
-        while(not phone[j].isdigit()):
+        while(not phone[j].isdigit() and j < len(phone)):
             start_Ph=start_Ph+1
             j=j+1
         phone=textContent[l][start_Ph:end_Ph]
