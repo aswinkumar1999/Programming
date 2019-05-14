@@ -1,5 +1,5 @@
 url = "https://collegedunia.com/chennai-colleges"
-no_of_pagedowns = 100
+no_of_pagedowns = 1
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -24,6 +24,7 @@ df = pd.DataFrame(columns=['S No','College Name', 'Address','State','Contact No(
 
 html = browser.page_source
 main_page_content = BeautifulSoup(html,features="lxml")
+webdriver.close()
 Content = []
 for i in range(len(main_page_content.find_all("div", {"class": "clg-name-address"}))):
     paragraphs = main_page_content.find_all("div", {"class": "clg-name-address"})[i]
@@ -92,4 +93,4 @@ for i in range(len(main_page_content.find_all("div", {"class": "clg-name-address
     list.append(email)
     list.append(weblink)
     df.loc[i+1]=list
-df.to_csv(r'~/Desktop/colleges.csv',index=None)
+    df.to_csv(r'~/Desktop/colleges.csv',index=None)
