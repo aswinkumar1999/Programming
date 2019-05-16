@@ -1,4 +1,6 @@
-urls = ["https://collegedunia.com/science/visakhapatnam-colleges","https://collegedunia.com/education/visakhapatnam-colleges"]
+urls = []
+urls.append("https://collegedunia.com/science/visakhapatnam-colleges")
+urls.append("https://collegedunia.com/education/visakhapatnam-colleges")
 state = "Andhra Pradesh"
 
 no_of_pagedowns = 100
