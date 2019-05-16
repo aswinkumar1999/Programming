@@ -1,4 +1,5 @@
-url = "https://collegedunia.com/chennai-colleges"
+url = "https://collegedunia.com/science/chennai-colleges"
+state = "West Bengal"
 no_of_pagedowns = 100
 
 from bs4 import BeautifulSoup
@@ -83,7 +84,7 @@ for i in range(len(main_page_content.find_all("div", {"class": "clg-name-address
                     if(val==0):
                         end = j
                         email = textContent[p][start+8:start+end]
-    print('.',end='')
+    print(name)
     list=[]
     list.append(i)
     list.append(name)
