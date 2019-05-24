@@ -1,7 +1,10 @@
 urls = []
-urls.append("https://collegedunia.com/science/visakhapatnam-colleges")
-urls.append("https://collegedunia.com/education/visakhapatnam-colleges")
-state = "Andhra Pradesh"
+urls.append("https://collegedunia.com/engineering/coimbatore-colleges")
+urls.append("https://collegedunia.com/management/coimbatore-colleges")
+urls.append("https://collegedunia.com/science/coimbatore-colleges")
+urls.append("https://collegedunia.com/arts/coimbatore-colleges")
+urls.append("https://collegedunia.com/commerce/coimbatore-colleges")
+state = "Tamil Nadu"
 
 no_of_pagedowns = 100
 
