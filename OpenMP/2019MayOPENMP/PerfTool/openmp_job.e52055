@@ -1,0 +1,55 @@
+
+ Performance counter stats for './MXV.exe 1000 1000':
+
+       3312.438132 task-clock                #   17.773 CPUs utilized          
+    8,29,58,94,987 cycles                    #    2.504 GHz                    
+    1,87,03,47,137 instructions              #    0.23  insns per cycle        
+       3,00,92,247 cache-references          #    9.085 M/sec                  
+         23,29,470 cache-misses              #    7.741 % of all cache refs    
+
+       0.186374863 seconds time elapsed
+
+
+ Performance counter stats for './MXV.exe 10000 100':
+
+       3292.042714 task-clock                #   17.753 CPUs utilized          
+    8,17,62,23,795 cycles                    #    2.484 GHz                    
+    1,80,22,82,139 instructions              #    0.22  insns per cycle        
+       3,01,44,170 cache-references          #    9.157 M/sec                  
+         23,42,053 cache-misses              #    7.770 % of all cache refs    
+
+       0.185439643 seconds time elapsed
+
+
+ Performance counter stats for './MXV.exe 100000 10':
+
+       2891.531202 task-clock                #   28.939 CPUs utilized          
+    7,48,73,43,239 cycles                    #    2.589 GHz                    
+    1,49,42,41,455 instructions              #    0.20  insns per cycle        
+       3,07,05,840 cache-references          #   10.619 M/sec                  
+         17,89,034 cache-misses              #    5.826 % of all cache refs    
+
+       0.099916840 seconds time elapsed
+
+
+ Performance counter stats for './MXV.exe 10 100000':
+
+       2789.039448 task-clock                #   29.590 CPUs utilized          
+    7,62,88,81,640 cycles                    #    2.735 GHz                    
+    1,63,30,99,664 instructions              #    0.21  insns per cycle        
+       3,00,20,938 cache-references          #   10.764 M/sec                  
+         15,76,555 cache-misses              #    5.252 % of all cache refs    
+
+       0.094254775 seconds time elapsed
+
+
+ Performance counter stats for './MXV.exe 100 10000':
+
+       2728.116854 task-clock                #   29.474 CPUs utilized          
+    7,50,24,04,656 cycles                    #    2.750 GHz                    
+    1,62,11,29,614 instructions              #    0.22  insns per cycle        
+       3,00,44,835 cache-references          #   11.013 M/sec                  
+         16,04,558 cache-misses              #    5.341 % of all cache refs    
+
+       0.092560182 seconds time elapsed
+
