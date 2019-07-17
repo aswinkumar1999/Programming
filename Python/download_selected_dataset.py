@@ -1,0 +1,14 @@
+from bs4 import BeautifulSoup
+import requests
+import subprocess
+limit = 19
+links = ['www.nrlmry.navy.mil/tcdat/tc04/ATL/06L.FRANCES/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc04/ATL/01L.ALEX/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc04/ATL/12L.KARL/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc04/ATL/11L.JEANNE/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc04/ATL/09L.IVAN/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc04/ATL/03L.CHARLEY/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc05/ATL/12L.KATRINA/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc05/ATL/04L.DENNIS/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc05/ATL/25L.WILMA/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc05/ATL/05L.EMILY/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc05/ATL/18L.RITA/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc05/ATL/27L.BETA/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc06/ATL/08L.HELENE/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc06/ATL/07L.GORDON/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc07/ATL/06L.FELIX/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc07/ATL/04L.DEAN/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc08/ATL/09L.IKE/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc08/ATL/15L.OMAR/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc08/ATL/07L.GUSTAV/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc08/ATL/02L.BERTHA/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc09/ATL/07L.FRED/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc09/ATL/03L.BILL/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc10/ATL/12L.JULIA/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc10/ATL/07L.EARL/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc10/ATL/13L.KARL/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc10/ATL/11L.IGOR/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc10/ATL/06L.DANIELLE/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc11/ATL/12L.KATIA/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc11/ATL/09L.IRENE/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc11/ATL/16L.OPHELIA/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc12/ATL/13L.MICHAEL/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc14/ATL/06L.EDOUARD/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc14/ATL/08L.GONZALO/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc15/ATL/11L.JOAQUIN/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc15/ATL/04L.DANNY/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc16/ATL/14L.MATTHEW/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc16/ATL/15L.NICOLE/ir/geo/1km', 'www.nrlmry.navy.mil/tcdat/tc16/ATL/07L.GASTON/ir/geo/1km']
+parallel_links=[]
+for i in links:
+    parallel_links.append(i)
+    if(int(len(parallel_links)==limit)):
+            p1 = subprocess.Popen(["echo"]+parallel_links,stdout=subprocess.PIPE)
+            p2 = subprocess.Popen(["xargs" ,"-n","1","-P",str(int(len(parallel_links))),'wget','-r','-np','-e','robots=off','-R','index.html*'],stdin=p1.stdout, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+            p1.stdout.close()  # Allow p1 to receive a SIGPIPE if p2 exits.
+            output,error = p2.communicate()
+            parallel_links=[]
