@@ -1,0 +1,6 @@
+
+10.22.43.177	50:64:2b:ce:c1:99	(Unknown)
+1 packets received by filter, 0 packets dropped by kernel
+Ending arp-scan 1.9: 1024 hosts scanned in 5.293 seconds (193.46 hosts/sec). 1 responded
+Interface: wlp3s0, datalink type: EN10MB (Ethernet)
+Starting arp-scan 1.9 with 1024 hosts (http://www.nta-monitor.com/tools/arp-scan/)
